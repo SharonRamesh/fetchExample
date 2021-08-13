@@ -1,0 +1,9 @@
+.movies-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.bounce{
+  animation: bounce 0.8s infinite alternate;
+}
+@keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-50px); } }

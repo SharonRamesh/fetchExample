@@ -1,0 +1,29 @@
+section {
+  margin: 25px auto;
+  width: 90%;
+  max-width: 40%;
+  text-align: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  background: #230052;
+  box-shadow: 0px 0px 32px 5px #e9ec3d;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 20px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover,
+button:active {
+  background-color: #460897;
+  border-color: #460897;
+}
