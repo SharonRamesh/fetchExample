@@ -22,10 +22,14 @@ button:focus {
   outline: none;
 }
 
-button:hover,
+button:hover:enabled,
 button:active {
   background-color: #460897;
   border-color: #460897;
+}
+
+button:hover:disabled{
+  cursor: auto;
 }
 
 @media screen and (max-width : 780px) {
