@@ -7,19 +7,35 @@ function App() {
 
   const [moviesData, setMovies] = useState([]);
   const [loading, loadingUpdate] = useState(false);
+  const [error, setError] = useState(null);
 
   const moviesFetchHandler = () => {
     loadingUpdate(true);
-    fetch("https://swapi.dev/api/films/").then(response => {return response.json()}).then(data => {setMovies(data.results);console.log(data.results);loadingUpdate(false);});
+    setError(null);
+    fetch("https://swapi.dev/api/films/")
+    .then(response => {
+      if(response.ok)
+        return response.json()
+      else
+        throw new Error('Something Went Wrong!!');
+    })
+    .then(data => {
+      setMovies(data.results);
+      console.log(data.results);
+      loadingUpdate(false);
+    }).catch(error => {
+      setError(error.message);
+    });
   }
 
   return (
     <React.Fragment>
       <section>
-        <button onClick={moviesFetchHandler}>Fetch Movies</button>
+        <button onClick={moviesFetchHandler} disabled={error ? false : ( loading ? true : false)   }>Fetch Movies</button>
       </section>
       <section>
-        <MoviesList movies={moviesData} loading={loading}/>
+        {error ? <h3>{error}</h3> : 
+        <MoviesList movies={moviesData} loading={loading}/> }
       </section>
     </React.Fragment>
   );
